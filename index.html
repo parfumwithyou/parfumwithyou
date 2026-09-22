@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parfum With You - Fragancias & Decants</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #070708;
+      --bg-card: #121215;
+      --bg-card-hover: #1a1a20;
+      --accent-white: #ffffff;
+      --text-main: #f1f1f5;
+      --text-muted: #8e8e9f;
+      --border-color: #22222a;
+      --gold-accent: #d4af37;
+      --whatsapp-green: #25d366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER Y NAVEGACIÓN */
+    header {
+  background-color: #000000; /* Negro puro oscuro */
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .header-logo-img {
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .header-logo-img:hover {
+      transform: scale(1.04);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent-white);
+    }
+
+    .cart-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .cart-btn:hover {
+      border-color: var(--accent-white);
+    }
+
+    .cart-badge {
+      background: var(--gold-accent);
+      color: #000;
+      border-radius: 50%;
+      padding: 2px 7px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    /* SECCIONES Y VISTAS */
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    /* HERO / INICIO */
+    .hero {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(7, 7, 8, 0.95) 100%), 
+              url('https://images.unsplash.com/photo-1588514912908-8f5891714f8d?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  padding: 120px 20px 90px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+    .hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff; /* o var(--gold-accent) si prefieres texto dorado */
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .btn-primary {
+      background: var(--accent-white);
+      color: var(--bg-dark);
+      padding: 14px 32px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #e0e0e0;
+    }
+
+    .featured-categories {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: var(--gold-accent);
+      margin: 10px auto 0;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cat-card:hover {
+      border-color: var(--gold-accent);
+      transform: translateY(-5px);
+    }
+
+    .cat-card i {
+      font-size: 2.5rem;
+      color: var(--gold-accent);
+      margin-bottom: 15px;
+    }
+
+    .cat-card h3 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .cat-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* TIENDA Y CATÁLOGO */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 20px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-bar:focus {
+      border-color: var(--gold-accent);
+    }
+
+    .filter-bar, .subfilter-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .f-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .f-btn.active, .f-btn:hover {
+      background: var(--accent-white);
+      color: var(--bg-dark);
+      border-color: var(--accent-white);
+    }
+
+    .sub-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .sub-btn.active {
+      border-color: var(--gold-accent);
+      color: var(--gold-accent);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-color);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-cat {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .card-brand {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .decant-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+      background: #070708;
+      padding: 4px;
+      border-radius: 6px;
+    }
+
+    .size-option {
+      flex: 1;
+      text-align: center;
+      padding: 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .size-option.selected {
+      background: var(--gold-accent);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent-white);
+    }
+
+    .add-btn {
+      background: var(--accent-white);
+      color: var(--bg-dark);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* CARRITO LATERAL */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 100%;
+      max-width: 380px;
+      height: 100%;
+      background: var(--bg-card);
+      border-left: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.open { right: 0; }
+
+    .cart-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+    }
+
+    .cart-item-img {
+      width: 45px;
+      height: 45px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .cart-item-info { flex-grow: 1; }
+    .cart-item-title { font-size: 0.85rem; font-weight: 600; }
+    .cart-item-detail { font-size: 0.75rem; color: var(--gold-accent); }
+    .cart-item-price { font-size: 0.8rem; color: var(--text-muted); }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .qty-btn {
+      background: var(--border-color);
+      color: white;
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cart-footer-drawer {
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
+      background: rgba(0,0,0,0.3);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: var(--whatsapp-green);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.open { display: block; }
+
+    footer {
+      background: #040405;
+      border-top: 1px solid var(--border-color);
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: auto;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo" onclick="switchView('home')" title="Volver al Inicio">
+        <img src="https://i.ibb.co/SXWhfwkg/IMG-3552-1-JPG.jpg" alt="Parfum With You" class="header-logo-img" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x50/121215/d4af37?text=PARFUM+WITH+YOU';">
+      </a>
+      
+      <div class="nav-links">
+        <span class="nav-link active" id="nav-home" onclick="switchView('home')">Inicio</span>
+        <span class="nav-link" id="nav-shop" onclick="switchView('shop')">Tienda</span>
+        <button class="cart-btn" onclick="toggleCart()">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- VISTA INICIO / LANDING -->
+  <div id="view-home" class="view-section active">
+    <section class="hero">
+      <h1 class="hero-title">Parfum With You</h1>
+      <p class="hero-subtitle">Descubre la elegancia de las mejores fragancias árabes, de diseñador y decants exclusivos</p>
+      <button class="btn-primary" onclick="switchView('shop')">Ver Catálogo</button>
+    </section>
+
+    <section class="featured-categories">
+      <h2 class="section-title">Nuestras Categorías</h2>
+      <div class="cat-grid">
+        <div class="cat-card" onclick="goToShopCategory('sellados')">
+          <i class="fa-solid fa-bottle-droplet"></i>
+          <h3>Perfumes Sellados</h3>
+          <p>Fragancias originales cerradas en formato Árabes y Diseñador.</p>
+        </div>
+        <div class="cat-card" onclick="goToShopCategory('decants')">
+          <i class="fa-solid fa-vial"></i>
+          <h3>Decants</h3>
+          <p>Muestras en atomizador de vidrio de 5ml y 10ml para probar antes de comprar.</p>
+        </div>
+        <div class="cat-card" onclick="goToShopCategory('giftset')">
+          <i class="fa-solid fa-gift"></i>
+          <h3>Gift Sets</h3>
+          <p>Sets de regalo exclusivos con miniaturas y complementos.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VISTA TIENDA / CATÁLOGO CON CATEGORÍAS Y SUBCATEGORÍAS -->
+  <div id="view-shop" class="view-section">
+    <div class="container">
+      <div class="controls">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Buscar perfume, marca o nota..." oninput="renderProducts()">
+        
+        <div class="filter-bar">
+          <button class="f-btn active" onclick="setCategory('all', this)">Todos</button>
+          <button class="f-btn" onclick="setCategory('sellados', this)">Perfumes Sellados</button>
+          <button class="f-btn" onclick="setCategory('decants', this)">Decants</button>
+          <button class="f-btn" onclick="setCategory('giftset', this)">Gift Sets</button>
+        </div>
+
+        <div class="subfilter-bar" id="subcatBar" style="display: none;">
+          <button class="sub-btn active" onclick="setSubcategory('all', this)">Todas las marcas</button>
+          <button class="sub-btn" onclick="setSubcategory('arabes', this)">Árabes</button>
+          <button class="sub-btn" onclick="setSubcategory('disenador', this)">Diseñador</button>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </div>
+
+  <!-- CARRITO -->
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Tu Pedido</h3>
+      <button class="close-cart" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer-drawer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout-btn" onclick="checkoutWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Parfum With You - Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const CONFIG = {
+      phone: "59899000000", // Inserta aquí tu número de WhatsApp sin +
+      currency: "$"
+    };
+
+    const PRODUCTS = [
+      {
+        id: 1,
+        nombre: "Club de Nuit Intense Man",
+        marca: "Armaf",
+        categoria: "sellados",
+        subcategoria: "arabes",
+        precio: 75.00,
+        imagen: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80"
+      },
+      {
+        id: 2,
+        nombre: "Khamrah",
+        marca: "Lattafa",
+        categoria: "decants",
+        subcategoria: "arabes",
+        preciosDecant: { "5ml": 12.00, "10ml": 22.00 },
+        imagen: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80"
+      },
+      {
+        id: 3,
+        nombre: "Sauvage Elixir",
+        marca: "Dior",
+        categoria: "sellados",
+        subcategoria: "disenador",
+        precio: 180.00,
+        imagen: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80"
+      },
+      {
+        id: 4,
+        nombre: "Bleu de Chanel",
+        marca: "Chanel",
+        categoria: "decants",
+        subcategoria: "disenador",
+        preciosDecant: { "5ml": 18.00, "10ml": 32.00 },
+        imagen: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80"
+      },
+      {
+        id: 5,
+        nombre: "Set Lattafa Deluxe",
+        marca: "Lattafa",
+        categoria: "giftset",
+        subcategoria: "arabes",
+        precio: 95.00,
+        imagen: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=500&q=80"
+      }
+    ];
+
+    let currentCategory = 'all';
+    let currentSubcategory = 'all';
+    let cart = [];
+    let selectedDecantSizes = {};
+
+    function switchView(viewName) {
+      document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+      document.getElementById(`view-${viewName}`).classList.add('active');
+      document.getElementById(`nav-${viewName}`).classList.add('active');
+
+      if (viewName === 'shop') {
+        renderProducts();
+      }
+    }
+
+    function goToShopCategory(cat) {
+      switchView('shop');
+      const targetBtn = Array.from(document.querySelectorAll('.f-btn')).find(b => b.innerText.toLowerCase().includes(cat));
+      if (targetBtn) {
+        setCategory(cat, targetBtn);
+      }
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = PRODUCTS.filter(p => {
+        const matchesSearch = p.nombre.toLowerCase().includes(search) || p.marca.toLowerCase().includes(search);
+        const matchesCat = currentCategory === 'all' || p.categoria === currentCategory;
+        const matchesSubcat = currentSubcategory === 'all' || p.subcategoria === currentSubcategory;
+        return matchesSearch && matchesCat && matchesSubcat;
+      });
+
+      filtered.forEach(p => {
+        const isDecant = p.categoria === 'decants';
+        const selectedSize = selectedDecantSizes[p.id] || '5ml';
+        const price = isDecant ? p.preciosDecant[selectedSize] : p.precio;
+
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${p.imagen}" class="card-img" alt="${p.nombre}">
+          <div class="card-body">
+            <span class="card-cat">${p.categoria} - ${p.subcategoria}</span>
+            <div class="card-title">${p.nombre}</div>
+            <div class="card-brand">${p.marca}</div>
+            
+            ${isDecant ? `
+              <div class="decant-selector">
+                <div class="size-option ${selectedSize === '5ml' ? 'selected' : ''}" onclick="selectSize(${p.id}, '5ml')">5 ml</div>
+                <div class="size-option ${selectedSize === '10ml' ? 'selected' : ''}" onclick="selectSize(${p.id}, '10ml')">10 ml</div>
+              </div>
+            ` : ''}
+
+            <div class="card-footer">
+              <span class="price">${CONFIG.currency}${price.toFixed(2)}</span>
+              <button class="add-btn" onclick="addToCart(${p.id})">Agregar</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectSize(productId, size) {
+      selectedDecantSizes[productId] = size;
+      renderProducts();
+    }
+
+    function setCategory(cat, btn) {
+      currentCategory = cat;
+      currentSubcategory = 'all';
+      document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const subcatBar = document.getElementById('subcatBar');
+      if (cat === 'sellados' || cat === 'decants') {
+        subcatBar.style.display = 'flex';
+        document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.sub-btn')[0].classList.add('active');
+      } else {
+        subcatBar.style.display = 'none';
+      }
+      renderProducts();
+    }
+
+    function setSubcategory(subcat, btn) {
+      currentSubcategory = subcat;
+      document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts();
+    }
+
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      const isDecant = product.categoria === 'decants';
+      const size = isDecant ? (selectedDecantSizes[productId] || '5ml') : null;
+      const price = isDecant ? product.preciosDecant[size] : product.precio;
+
+      const cartItemId = isDecant ? `${product.id}-${size}` : `${product.id}`;
+      const existing = cart.find(item => item.cartItemId === cartItemId);
+
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({
+          cartItemId,
+          id: product.id,
+          nombre: product.nombre,
+          size,
+          price,
+          imagen: product.imagen,
+          qty: 1
+        });
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      let count = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.imagen}" class="cart-item-img">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.nombre}</div>
+            ${item.size ? `<div class="cart-item-detail">Tamaño: ${item.size}</div>` : ''}
+            <div class="cart-item-price">${CONFIG.currency}${item.price.toFixed(2)}</div>
+          </div>
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="changeQty('${item.cartItemId}', -1)">-</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${item.cartItemId}', 1)">+</button>
+          </div>
+        `;
+        cartItemsContainer.appendChild(div);
+      });
+
+      cartCount.innerText = count;
+      cartTotal.innerText = `${CONFIG.currency}${total.toFixed(2)}`;
+    }
+
+    function changeQty(cartItemId, delta) {
+      const item = cart.find(i => i.cartItemId === cartItemId);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.cartItemId !== cartItemId);
+        }
+      }
+      updateCart();
+    }
+
+    function toggleCart() {
+      document.getElementById('cartDrawer').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('open');
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert("El carrito está vacío");
+        return;
+      }
+
+      let message = "Hola Parfum With You! Quisiera consultar/realizar el siguiente pedido:\n\n";
+      let total = 0;
+
+      cart.forEach(item => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        const detail = item.size ? ` (${item.size})` : '';
+        message += `• ${item.nombre}${detail} x${item.qty} - ${CONFIG.currency}${subtotal.toFixed(2)}\n`;
+      });
+
+      message += `\n*Total estimado: ${CONFIG.currency}${total.toFixed(2)}*`;
+
+      window.open(`https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
