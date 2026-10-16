@@ -1,16 +1,6 @@
 {
   "productos": [
     {
-      "id": 306,
-      "nombre": "Stronger With You Intenseley",
-      "marca": "Armani",
-      "categoria": "decants",
-      "subcategoria": "disenador",
-      "precio": 0,
-      "inStock": true,
-      "imagen": "https://dikl249ktecee.cloudfront.net/_img_productos/perfume-giorgio-armani-stronger-with-you-intensely-edp-fb-.jpg"
-    },
-    {
       "id": 6,
       "nombre": "Afnan 9 PM Night Out 100ml",
       "marca": "Afnan",
