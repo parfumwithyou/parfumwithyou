@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: parfumwithyou/parfumwithyou
-  branch: main
+  name: test-repo
 
 media_folder: ""
 public_folder: ""
@@ -11,7 +9,7 @@ collections:
     label: "Gestión de Productos"
     files:
       - file: "products.json"
-        label: "Lista de Perfumes"
+        label: "Lista General de Perfumes"
         name: "productos_list"
         fields:
           - label: "Productos"
