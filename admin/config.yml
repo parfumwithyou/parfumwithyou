@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: parfumwithyou/parfumwithyou
+  branch: main
+
+media_folder: ""
+public_folder: ""
+
+collections:
+  - name: "catalogo"
+    label: "Gestión de Productos"
+    files:
+      - file: "products.json"
+        label: "Lista de Perfumes"
+        name: "productos_list"
+        fields:
+          - label: "Productos"
+            name: "productos"
+            widget: "list"
+            fields:
+              - { label: "ID Único", name: "id", widget: "number" }
+              - { label: "Nombre del Perfume", name: "nombre", widget: "string" }
+              - { label: "Marca", name: "marca", widget: "string" }
+              - { label: "Categoría", name: "categoria", widget: "select", options: ["sellados", "decants", "giftset"] }
+              - { label: "Subcategoría", name: "subcategoria", widget: "select", options: ["arabes", "disenador"] }
+              - { label: "Precio General (Sellados/Giftsets)", name: "precio", widget: "number", required: false }
+              - label: "Precios de Decants"
+                name: "preciosDecant"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Precio 5ml", name: "5ml", widget: "number", required: false }
+                  - { label: "Precio 10ml", name: "10ml", widget: "number", required: false }
+              - { label: "¿En Stock? (Encendido = Comprar / Apagado = Consultar)", name: "inStock", widget: "boolean", default: true }
+              - { label: "Foto del Producto (Nombre de archivo o URL)", name: "imagen", widget: "string" }
