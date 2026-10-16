@@ -461,8 +461,10 @@
         const price = isDecant ? (p.preciosDecant ? p.preciosDecant[selectedSize] : null) : p.precio;
 
         const actionBtn = p.inStock
-          ? `<button class="add-btn" onclick="addToCart(${p.id})">Agregar</button>`
-          : `<button class="consult-btn" onclick="consultStock('${p.nombre}')">Consultar disponibilidad</button>`;
+  ? `<button class="add-btn" onclick="addToCart(${p.id})">Agregar</button>`
+  : (p.categoria === 'decants'
+      ? `<button class="consult-btn" style="border-color: #555; color: #888; cursor: not-allowed;">Agotado</button>`
+      : `<button class="consult-btn" onclick="consultStock('${p.nombre}')">Consultar disponibilidad</button>`);
 
         const priceDisplay = price ? `${CONFIG.currency}${Number(price).toFixed(2)}` : '';
 
