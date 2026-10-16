@@ -2,7 +2,12 @@ backend:
   name: github
   repo: parfumwithyou/parfumwithyou
   branch: main
-  base_url: https://auth.decapcms.org
+  commit_messages:
+    create: 'Crear {{collection}} "{{slug}}"'
+    update: 'Actualizar {{collection}} "{{slug}}"'
+    delete: 'Eliminar {{collection}} "{{slug}}"'
+    upload media: 'Subir "{{path}}"'
+    delete media: 'Eliminar "{{path}}"'
 
 media_folder: ""
 public_folder: ""
