@@ -54,4 +54,45 @@
   { "id": 231, "nombre": "Granada", "marca": "Rayhaan", "categoria": "decants", "subcategoria": "arabes", "preciosDecant": { "5ml": 300, "10ml": 500 }, "inStock": true, "imagen": "rayhaan-granada.jpg" },
   { "id": 232, "nombre": "Italia", "marca": "Rayhaan", "categoria": "decants", "subcategoria": "arabes", "preciosDecant": { "5ml": 300, "10ml": 500 }, "inStock": true, "imagen": "rayhaan-italia.jpg" },
   { "id": 233, "nombre": "Pretty in Pink", "marca": "Rayhaan", "categoria": "decants", "subcategoria": "arabes", "preciosDecant": { "5ml": 300, "10ml": 500 }, "inStock": true, "imagen": "rayhaan-pretty-in-pink.jpg" }
+  {"id": 104,"nombre": "Stronger With You Intensely","marca": "Armani","categoria": "decants","subcategoria": "disenador","preciosDecant": { "5ml": 500, "10ml": 700 }, "inStock": true,"imagen": "armani-stronger-with-you-intenseley.jpg"},
+  {
+    "id": 105,
+    "nombre": "The Most Wanted EDP Intense",
+    "marca": "Azzaro",
+    "categoria": "decants",
+    "subcategoria": "disenador",
+    "preciosDecant": { "5ml": 500, "10ml": 700 },
+    "inStock": true,
+    "imagen": "azzaro-the-most-wanted-edp-intense.jpg"
+  },
+  {
+    "id": 234,
+    "nombre": "Hawas Ice",
+    "marca": "Rasasi",
+    "categoria": "decants",
+    "subcategoria": "arabes",
+    "preciosDecant": { "5ml": 300, "10ml": 500 },
+    "inStock": true,
+    "imagen": "rasasi-hawas-ice.jpg"
+  },
+  {
+    "id": 20,
+    "nombre": "Salvo Intense 100ml",
+    "marca": "Maison Alhambra",
+    "categoria": "sellados",
+    "subcategoria": "arabes",
+    "precio": 2400,
+    "inStock": true,
+    "imagen": "maison.alhambra-salvo-intense.jpg"
+  },
+  {
+    "id": 21,
+    "nombre": "Asad Elixir 100ml",
+    "marca": "Lattafa",
+    "categoria": "sellados",
+    "subcategoria": "arabes",
+    "precio": 2500,
+    "inStock": true,
+    "imagen": "lattafa-asad-elixir.jpg"
+  }
 ]
